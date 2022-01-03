@@ -1,19 +1,12 @@
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        carry = 0
-        head = ListNode(0)
-        result = head 
-        
-        
-        while l1 or l2 or carry:
-            if l1:
-                carry += l1.val
-                l1 = l1.next
-            if l2:
-                carry += l2.val
-                l2 = l2.next
-            head.next = ListNode(carry%10)
-            head = head.next
-            carry //= 10
-            print(ListNode(carry%10))
-        return result.next
+    def reverse(self, x: int) -> int:
+        abs_value = abs(x)
+        sign = 1 if x >= 0 else -1 
+        reverse = 0
+        max_value = 2 ** 31 - 1
+        while abs_value > 0:
+            reverse = reverse * 10 + (abs_value % 10)
+            abs_value //= 10
+            if reverse > max_value:
+                return 0
+        return reverse * sign

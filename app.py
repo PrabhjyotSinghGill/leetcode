@@ -1,10 +1,7 @@
 class Solution:
-    def targetIndices(self, nums: List[int], target: int) -> List[int]:
-        lessthan = 0 
-        count = 0 
-        for n in nums:
-                if n < target:
-                    lessthan += 1
-                elif n == target:
-                    count += 1
-        return range(lessthan, lessthan+count) 
+    def generate(self, numRows: int) -> List[List[int]]:
+        dp = [[1]*(i+1) for i in range(numRows)]
+        for i in range(2,numRows):
+            for j in range(1,i):
+                dp[i][j] = dp[i-1][j]+dp[i-1][j-1]
+        return dp
